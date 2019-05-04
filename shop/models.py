@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext as _
 
+from core.models import Base
 
-class Category(models.Model):
+
+class ShopBase(Base):
     title = models.CharField(
         max_length=100,
         verbose_name=_('Название'),
@@ -11,6 +13,11 @@ class Category(models.Model):
     )
 
     class Meta:
+        abstract = True
+
+
+class Category(ShopBase):
+    class Meta:
         verbose_name = _('Категория')
         verbose_name_plural = _('Категории')
 
@@ -18,13 +25,7 @@ class Category(models.Model):
         return self.title
 
 
-class Item(models.Model):
-    title = models.CharField(
-        max_length=100,
-        verbose_name=_('Название'),
-        null=False,
-        blank=False
-    )
+class Item(ShopBase):
     category = models.ForeignKey(
         to='Category',
         related_name='items',
