@@ -1,3 +1,7 @@
 Django==2.2
-psycopg2-binary==2.8.2
+django-debug-toolbar==1.11
+django-jinja-2.4.1
 flake8==3.7.7
+ipython
+ipdb
+psycopg2-binary==2.8.2
