@@ -44,7 +44,7 @@ class ItemView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        item_id = kwargs.get('item_id')
+        item_id = kwargs.get('publication_id')
         item = models.Item.objects.get(id=item_id)
         context.update({'item': item})
         return context
